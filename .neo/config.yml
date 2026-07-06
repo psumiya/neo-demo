@@ -23,6 +23,10 @@ risk:
     - "**/*.md"
     - "config/flags/**"
     - "src/copy/**"            # user-facing strings
+    # demo repo: the whole library is small and test-gated; let code PRs go GREEN
+    - "neo_demo/**"
+    - "tests/**"
+    - ".neo/evals/cases/**"
   blocked_paths:
     - "**/migrations/**"
     - "**/schema.*"
@@ -34,7 +38,8 @@ risk:
     - "terraform/**"
     - "**/Dockerfile"
     - "**/.github/workflows/**"
-    - ".neo/**"
+    - ".neo/config.yml"
+    - ".neo/deploy/**"
 
 # --- deploy: opt-in. `none` ships no deploy workflow; you deploy however you like. ----------
 deploy:
