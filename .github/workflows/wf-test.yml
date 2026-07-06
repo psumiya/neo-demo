@@ -14,11 +14,6 @@ jobs:
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
-  nested_at_tag:
-    uses: psumiya/neo/.github/workflows/maintenance.yml@v0.2.0
-    secrets:
-      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-
   nested_at_sha:
     uses: psumiya/neo/.github/workflows/maintenance.yml@13a98757dd831824c39ca8d23d4c300c775a3f01
     secrets:
