@@ -1,0 +1,7 @@
+# Golden (deterministic) eval: slugify's contract, exercised through the installed package.
+name: slugify-basic
+kind: golden
+cmd: "python3 -c \"from neo_demo import slugify; print(slugify('Hello, World!'))\""
+expect:
+  mode: contains
+  value: "hello-world"
