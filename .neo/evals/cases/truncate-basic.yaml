@@ -1,0 +1,7 @@
+# Golden (deterministic) eval: truncate's core contract, exercised through the installed package.
+name: truncate-basic
+kind: golden
+cmd: "python3 -c \"from neo_demo import truncate; print(truncate('Hello, World!', 7))\""
+expect:
+  mode: contains
+  value: "Hello,…"

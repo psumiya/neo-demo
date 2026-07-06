@@ -12,3 +12,12 @@ def slugify(text: str) -> str:
 def word_count(text: str) -> int:
     """Count whitespace-separated words."""
     return len(text.split())
+
+
+def truncate(text: str, max_len: int) -> str:
+    """Return text shortened to max_len chars, ending with … if cut; raises ValueError for max_len < 1."""
+    if max_len < 1:
+        raise ValueError(f"max_len must be >= 1, got {max_len}")
+    if len(text) <= max_len:
+        return text
+    return text[: max_len - 1] + "…"
