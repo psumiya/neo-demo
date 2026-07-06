@@ -8,13 +8,3 @@ jobs:
     uses: psumiya/neo/.github/workflows/metrics-weekly.yml@main
     with:
       days: "7"
-
-  factcheck_direct:
-    uses: psumiya/neo/.github/workflows/claudemd-factcheck-weekly.yml@main
-    secrets:
-      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-
-  audit_direct:
-    uses: psumiya/neo/.github/workflows/audit-weekly.yml@main
-    with:
-      days: "7"
