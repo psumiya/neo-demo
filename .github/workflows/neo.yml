@@ -19,6 +19,11 @@ jobs:
   # Issue gets the `neo:build` label -> hand it to the harness to produce a PR.
   build:
     if: github.event_name == 'issues' && github.event.label.name == 'neo:build'
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
     uses: psumiya/neo/.github/workflows/neo-build.yml@v0.2.0
     with:
       issue_number: ${{ github.event.issue.number }}
@@ -28,6 +33,11 @@ jobs:
   # Any PR -> evals gate + risk classify + AI review + auto-merge GREEN.
   review:
     if: github.event_name == 'pull_request'
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      checks: read
     uses: psumiya/neo/.github/workflows/ai-review.yml@v0.2.0
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -35,6 +45,11 @@ jobs:
   # Weekly (or manual) -> metrics + CLAUDE.md fact-check + audit.
   maintenance:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
     uses: psumiya/neo/.github/workflows/maintenance.yml@v0.2.0
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
