@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  leaf_at_tag:
-    uses: psumiya/neo/.github/workflows/metrics-weekly.yml@v0.2.0
+  metrics_direct:
+    uses: psumiya/neo/.github/workflows/metrics-weekly.yml@main
     with:
       days: "7"
 
-  nested_at_main:
-    uses: psumiya/neo/.github/workflows/maintenance.yml@main
+  factcheck_direct:
+    uses: psumiya/neo/.github/workflows/claudemd-factcheck-weekly.yml@main
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
-  nested_at_sha:
-    uses: psumiya/neo/.github/workflows/maintenance.yml@13a98757dd831824c39ca8d23d4c300c775a3f01
-    secrets:
-      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+  audit_direct:
+    uses: psumiya/neo/.github/workflows/audit-weekly.yml@main
+    with:
+      days: "7"
